@@ -8,7 +8,7 @@ RUN \
 				diffutils elfutils-dev findutils flex musl-fts-dev g++ gawk gcc gettext git \
 				grep intltool libxslt linux-headers make musl-libintl musl-obstack-dev \
 				ncurses-dev openssl-dev patch perl python3-dev rsync tar \
-				unzip util-linux wget zlib-dev bash \
+				unzip util-linux wget zlib-dev bash sudo \
 				p7zip xz bison m4 autoconf automake cmake subversion && \
 	apk --no-cache add quilt --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 
@@ -40,6 +40,7 @@ USER user
 VOLUME ["/home/user"]
 VOLUME ["/usr/src"]
 VOLUME ["/scripts/entrypoint.d"]
+VOLUME ["/root"]
 
 EXPOSE 22
 
