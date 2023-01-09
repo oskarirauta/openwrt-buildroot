@@ -33,7 +33,12 @@ RUN \
 RUN \
 	rm -f /var/cache/apk/*
 
+COPY sudoers /etc/sudoers
 COPY entrypoint.sh /scripts/entrypoint.sh
+
+RUN \
+	passwd -d root && \
+	passwd -d user
 
 USER user
 
