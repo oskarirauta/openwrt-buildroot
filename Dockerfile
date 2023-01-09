@@ -9,7 +9,7 @@ RUN \
 	apk --no-cache --update add grep intltool libxslt linux-headers make musl-libintl musl-obstack-dev && \
 	apk --no-cache --update add ncurses-dev openssl-dev patch perl python3-dev rsync tar && \
 	apk --no-cache --update add unzip util-linux wget zlib-dev bash && \
-	apk --no-cache --update add unrar p7zip xz bison m4 autoconf automake cmake subversion && \
+	apk --no-cache --update add p7zip xz bison m4 autoconf automake cmake subversion && \
 	apk --no-cache add quilt --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 RUN \
