@@ -21,7 +21,7 @@ RUN \
 
 RUN \
 	addgroup -g 1002 -S developers && \
-	adduser -u 1002 -D -S -h /home/user -G developers -g user user
+	adduser -u 1002 -D -s /bin/sh -h /home/user -G developers -g user user
 
 RUN \
 	mkdir -p /usr/src && \
@@ -34,6 +34,7 @@ RUN \
 	rm -f /var/cache/apk/*
 
 COPY sudoers /etc/sudoers
+COPY sshd_config /etc/ssh/sshd_config
 COPY entrypoint.sh /scripts/entrypoint.sh
 
 RUN \
