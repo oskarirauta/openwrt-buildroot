@@ -4,12 +4,12 @@ RUN \
 	apk --no-cache update && \
 	apk --no-cache upgrade && \
 	apk --no-cache --update add sudo busybox-suid && \
-	apk --no-cache --update add nano openssh argp-standalone asciidoc bash bc binutils bzip2 cdrkit coreutils && \
-	apk --no-cache --update add diffutils elfutils-dev findutils flex musl-fts-dev g++ gawk gcc gettext git && \
-	apk --no-cache --update add grep intltool libxslt linux-headers make musl-libintl musl-obstack-dev && \
-	apk --no-cache --update add ncurses-dev openssl-dev patch perl python3-dev rsync tar && \
-	apk --no-cache --update add unzip util-linux wget zlib-dev bash && \
-	apk --no-cache --update add p7zip xz bison m4 autoconf automake cmake subversion && \
+	apk --no-cache --update add nano openssh argp-standalone asciidoc bash bc binutils bzip2 cdrkit coreutils \
+				diffutils elfutils-dev findutils flex musl-fts-dev g++ gawk gcc gettext git \
+				grep intltool libxslt linux-headers make musl-libintl musl-obstack-dev \
+				ncurses-dev openssl-dev patch perl python3-dev rsync tar \
+				unzip util-linux wget zlib-dev bash \
+				p7zip xz bison m4 autoconf automake cmake subversion && \
 	apk --no-cache add quilt --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 RUN \
@@ -34,6 +34,8 @@ RUN \
 	rm -f /var/cache/apk/*
 
 COPY entrypoint.sh /scripts/entrypoint.sh
+
+USER user
 
 VOLUME ["/home/user"]
 VOLUME ["/usr/src"]
