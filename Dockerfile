@@ -8,9 +8,10 @@ RUN \
 				diffutils elfutils-dev findutils flex musl-fts-dev g++ gawk gcc gettext git \
 				grep intltool libxslt linux-headers make musl-libintl musl-obstack-dev \
 				ncurses-dev openssl-dev patch perl python3-dev rsync tar \
-				unzip util-linux wget zlib-dev bash sudo \
+				unzip util-linux wget zlib-dev bash sudo tmux \
 				p7zip xz bison m4 autoconf automake cmake subversion && \
-	apk --no-cache add quilt --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+	apk --no-cache add quilt --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing && \
+	apk --no-cache add perl-extutils-makemaker --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 
 RUN \
 	ln -s /usr/lib/libncurses.so /usr/lib/libtinfo.so
@@ -49,8 +50,6 @@ VOLUME ["/scripts/entrypoint.d"]
 VOLUME ["/root"]
 
 EXPOSE 22
-
-STOPSIGNAL SIGTERM
 
 ENTRYPOINT ["/scripts/entrypoint.sh"]
 WORKDIR /usr/src
