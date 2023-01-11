@@ -42,6 +42,13 @@ for script in /etc/profile.d/*.sh ; do
 done
 unset script
 
+pkgcount() {
+	sz=$(du -c -h -a /usr/src/openwrt/bin | tail -1)
+	cnt=$(du -c -h -a /usr/src/openwrt/bin| wc -l)
+	echo $sz
+	echo "$cnt files"
+}
+
 export SHELL=/bin/bash
 export PS1='[$(whoami)@$(hostname) $PWD]\$ '
 export EDITOR='/usr/bin/nano'
