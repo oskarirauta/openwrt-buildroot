@@ -21,8 +21,8 @@ RUN \
 	chown -R 1002:1002 /home/user
 
 RUN \
-	addgroup -g 1002 -S developers && \
-	adduser -u 1002 -D -s /bin/sh -h /home/user -G developers -g user user
+	addgroup -g 1002 -S devel && \
+	adduser -u 1002 -D -s /bin/bash -h /home/user -G devel -g user user
 
 RUN \
 	mkdir -p /usr/src && \
@@ -32,11 +32,19 @@ RUN \
 	mkdir -p /scripts /scripts/entrypoint.d
 
 RUN \
+	sed -i 's#/bin/sh#/bin/bash/#g' /etc/passwd && \
+	rm /etc/motd && \
+	rm /etc/profile && \
 	rm -f /var/cache/apk/*
 
 COPY sudoers /etc/sudoers
 COPY sshd_config /etc/ssh/sshd_config
 COPY entrypoint.sh /scripts/entrypoint.sh
+COPY profile /etc/profile
+
+RUN \
+	chown root:root /etc/profile && \
+	chmod 644 /etc/profile
 
 RUN \
 	passwd -d root && \
