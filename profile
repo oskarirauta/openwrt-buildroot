@@ -44,9 +44,10 @@ unset script
 
 pkgcount() {
 	sz=$(du -c -h -a /usr/src/openwrt/bin | tail -1)
-	cnt=$(du -c -h -a /usr/src/openwrt/bin| wc -l)
+	pkgs=$(find /usr/src/openwrt/bin -type f -name "*.ipk"| wc -l)
+	cnt=$(find /usr/src/openwrt/bin -type f | wc -l)
 	echo $sz
-	echo "$cnt files"
+	echo "$pkgs packages / $cnt files"
 }
 
 export SHELL=/bin/bash
