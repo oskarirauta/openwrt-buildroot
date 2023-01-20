@@ -61,4 +61,5 @@ EXPOSE 22
 
 ENTRYPOINT ["/scripts/entrypoint.sh"]
 WORKDIR /usr/src
+SHELL ["/bin/bash", "-c"]
 CMD ["/bin/bash"]
